@@ -1,27 +1,26 @@
 package org.whitfie.command;
 
-import org.whitfie.order.Order;
-import org.whitfie.order.OrderGrowthHalf;
-import org.whitfie.order.ShiftEvenRows;
-import org.whitfie.sum.FindSum;
-import org.whitfie.sum.SumIndexDelThree;
-import org.whitfie.sum.SumMaxColums;
+import org.whitfie.array.order.ArrayOrder;
+import org.whitfie.array.order.OrderGrowthMaxElement;
+import org.whitfie.array.order.ShiftEvenRows;
+import org.whitfie.array.sum.ArraySum;
+import org.whitfie.array.sum.SumMaxColums;
+import org.whitfie.array.sum.SumMaxRows;
+import org.whitfie.utils.ConsoleUtils;
 import org.whitfie.utils.RandomUtils;
-
-import java.util.Arrays;
-import java.util.Scanner;
 
 public class Task2 implements Command {
 
     @Override
     public void execute() {
         double[][] array;
-        Scanner scanner = new Scanner(System.in);
+        ArrayOrder arrayOrder = null;
+        ArraySum arraySum = null;
 
         System.out.println("input rows");
-        final int rows = scanner.nextInt();
+        final int rows = ConsoleUtils.getUint();
         System.out.println("input colums");
-        final int colums = scanner.nextInt();
+        final int colums = ConsoleUtils.getUint();
 
         array = new double[rows][colums];
 
@@ -31,10 +30,26 @@ public class Task2 implements Command {
             }
         }
 
-        System.out.println("input offset");
+        System.out.println("input variant ");
 
-        Order order = new ShiftEvenRows(array, scanner.nextInt());
-        order.order();
+        switch (ConsoleUtils.getUint()) {
+            case 1 -> {
+                System.out.println("input offset");
+                arrayOrder = new ShiftEvenRows(array, ConsoleUtils.getInt());
+                arraySum = new SumMaxColums(array);
+            }
+            case 2 -> {
+                arrayOrder = new OrderGrowthMaxElement(array);
+                arraySum = new SumMaxRows(array);
+            }
+            default -> {
+                System.out.println("not found variant");
+                return;
+            }
+
+        }
+
+        arrayOrder.order();
 
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length ; j++) {
@@ -43,9 +58,7 @@ public class Task2 implements Command {
             System.out.println();
         }
 
-        FindSum findSum = new SumMaxColums(array);
-
-        System.out.println("\nsum -> " + findSum.sum());
+        System.out.println("\nsum -> " + arraySum.sum());
 
     }
 }

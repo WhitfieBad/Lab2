@@ -1,24 +1,23 @@
-package org.whitfie.sum;
+package org.whitfie.array.sum;
 
-public class SumMaxColums implements FindSum {
+public class SumMaxRows implements  ArraySum {
 
     private double[][] array;
 
-    public SumMaxColums(double[][] array) {
+    public SumMaxRows(double[][] array) {
         this.array = array;
     }
 
     @Override
     public double sum() {
-
         double sumColum = 0;
         double sumMax = Integer.MIN_VALUE;
 
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array[0].length; i++) {
             sumColum = 0;
 
-            for (int j = 0; j < array[0].length ; j++) {
-                sumColum += array[i][j];
+            for (int j = 0; j < array.length ; j++) {
+                sumColum += array[j][i];
             }
 
             if (sumMax < sumColum) {

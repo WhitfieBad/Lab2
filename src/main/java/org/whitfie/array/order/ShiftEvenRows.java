@@ -1,9 +1,9 @@
-package org.whitfie.order;
+package org.whitfie.array.order;
 
 import java.util.Arrays;
 import java.util.Collections;
 
-public class ShiftEvenRows implements Order {
+public class ShiftEvenRows implements ArrayOrder {
 
     private int offset;
     private double[][] array;

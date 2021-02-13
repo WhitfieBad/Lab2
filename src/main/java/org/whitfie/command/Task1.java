@@ -1,23 +1,22 @@
 package org.whitfie.command;
 
-import org.whitfie.order.Order;
-import org.whitfie.order.OrderGrowthHalf;
-import org.whitfie.sum.FindSum;
-import org.whitfie.sum.SumIndexDelThree;
+import org.whitfie.array.order.*;
+import org.whitfie.array.sum.*;
+import org.whitfie.utils.ConsoleUtils;
 import org.whitfie.utils.RandomUtils;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class Task1 implements Command {
 
     @Override
     public void execute() {
         double[] array;
-        Scanner scanner = new Scanner(System.in);
+        ArrayOrder arrayOrder = null;
+        ArraySum arraySum = null;
 
         System.out.println("input length");
-        final int length = scanner.nextInt();
+        final int length = ConsoleUtils.getUint();
 
         array = new double[length];
 
@@ -25,14 +24,28 @@ public class Task1 implements Command {
             array[i] = Math.round(RandomUtils.rnd(-10.51, -10.53) * 100d) / 100d;
         }
 
-        Order order = new OrderGrowthHalf(array);
-        order.order();
+        System.out.println("input variant");
+        switch (ConsoleUtils.getUint()) {
+            case 1 -> {
+                arrayOrder = new OrderGrowthHalf(array);
+                arraySum = new SumIndexDelThree(array);
+            }
+            case 2 -> {
+                System.out.println("input offset");
+                arrayOrder = new OrderLastElementsDecrease(array, ConsoleUtils.getIntRange(0,array.length));
+                arraySum = new SumPositivePairsIndex(array);
+            }
+            default -> {
+                System.out.println("not found variant");
+                return;
+            }
+        }
+
+        arrayOrder.order();
 
         Arrays.stream(array).forEach(x -> System.out.print(x + " "));
 
-        FindSum findSum = new SumIndexDelThree(array);
-
-        System.out.println("\nsum -> " + findSum.sum());
+        System.out.println("\nsum -> " + arraySum.sum());
 
     }
 }

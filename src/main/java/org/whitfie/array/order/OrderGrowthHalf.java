@@ -1,8 +1,8 @@
-package org.whitfie.order;
+package org.whitfie.array.order;
 
 import java.util.Arrays;
 
-public class OrderGrowthHalf implements Order {
+public class OrderGrowthHalf implements ArrayOrder {
 
     private double[] array;
 
