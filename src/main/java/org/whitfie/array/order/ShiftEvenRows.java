@@ -14,7 +14,7 @@ public class ShiftEvenRows implements ArrayOrder {
     }
 
     @Override
-    public void order() {
+    public void orderArray() {
         for (int i = 0; i < array.length; i++) {
             if (i % 2 == 0) {
                 leftRotate(array[i], offset);

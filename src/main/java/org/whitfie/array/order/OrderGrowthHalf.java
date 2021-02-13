@@ -11,10 +11,7 @@ public class OrderGrowthHalf implements ArrayOrder {
     }
 
     @Override
-    public void order() {
-        double[] sortedArray = Arrays.stream(array).limit(array.length / 2).sorted().toArray();
-        for (int i = 0; i < array.length / 2; i++) {
-            array[i] = sortedArray[i];
-        }
+    public void orderArray() {
+        Arrays.sort(array,array.length / 2, array.length);
     }
 }

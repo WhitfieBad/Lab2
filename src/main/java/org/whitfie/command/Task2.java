@@ -1,7 +1,7 @@
 package org.whitfie.command;
 
 import org.whitfie.array.order.ArrayOrder;
-import org.whitfie.array.order.OrderGrowthMaxElement;
+import org.whitfie.array.order.OrderGrowthMaxСolum;
 import org.whitfie.array.order.ShiftEvenRows;
 import org.whitfie.array.sum.ArraySum;
 import org.whitfie.array.sum.SumMaxColums;
@@ -26,7 +26,7 @@ public class Task2 implements Command {
 
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
-                array[i][j] = Math.round(RandomUtils.rnd(-10.51, -10.53) * 100d) / 100d;
+                array[i][j] = RandomUtils.rnd(-10.51, -10.53,100);
             }
         }
 
@@ -39,7 +39,7 @@ public class Task2 implements Command {
                 arraySum = new SumMaxColums(array);
             }
             case 2 -> {
-                arrayOrder = new OrderGrowthMaxElement(array);
+                arrayOrder = new OrderGrowthMaxСolum(array);
                 arraySum = new SumMaxRows(array);
             }
             default -> {
@@ -49,7 +49,7 @@ public class Task2 implements Command {
 
         }
 
-        arrayOrder.order();
+        arrayOrder.orderArray();
 
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length ; j++) {
@@ -58,7 +58,7 @@ public class Task2 implements Command {
             System.out.println();
         }
 
-        System.out.println("\nsum -> " + arraySum.sum());
+        System.out.println("\nsum -> " + arraySum.calculateSumArray());
 
     }
 }

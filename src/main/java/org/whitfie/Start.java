@@ -6,6 +6,7 @@ import org.whitfie.command.Task2;
 import org.whitfie.utils.ConsoleUtils;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 
 public class Start {
@@ -19,6 +20,7 @@ public class Start {
 
         command = new Task2();
         command.execute();
+
     }
 
 }

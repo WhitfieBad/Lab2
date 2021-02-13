@@ -9,7 +9,7 @@ public class SumPositivePairsIndex implements ArraySum {
     }
 
     @Override
-    public double sum() {
+    public double calculateSumArray() {
         double sum = 0;
         for (int i = 0; i < array.length; i++) {
             if (i % 2 == 0 && array[i] >= 0) {

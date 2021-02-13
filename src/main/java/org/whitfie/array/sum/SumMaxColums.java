@@ -9,7 +9,7 @@ public class SumMaxColums implements ArraySum {
     }
 
     @Override
-    public double sum() {
+    public double calculateSumArray() {
 
         double sumColum = 0;
         double sumMax = Integer.MIN_VALUE;

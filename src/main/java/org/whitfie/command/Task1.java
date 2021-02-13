@@ -21,7 +21,7 @@ public class Task1 implements Command {
         array = new double[length];
 
         for (int i = 0; i < array.length; i++) {
-            array[i] = Math.round(RandomUtils.rnd(-10.51, -10.53) * 100d) / 100d;
+            array[i] = RandomUtils.rnd(-10.51, -10.53, 100);
         }
 
         System.out.println("input variant");
@@ -32,7 +32,7 @@ public class Task1 implements Command {
             }
             case 2 -> {
                 System.out.println("input offset");
-                arrayOrder = new OrderLastElementsDecrease(array, ConsoleUtils.getIntRange(0,array.length));
+                arrayOrder = new OrderLastElementsDecrease(array, ConsoleUtils.getUint());
                 arraySum = new SumPositivePairsIndex(array);
             }
             default -> {
@@ -41,11 +41,14 @@ public class Task1 implements Command {
             }
         }
 
-        arrayOrder.order();
-
+        try {
+            arrayOrder.orderArray();
+        } catch (ArrayIndexOutOfBoundsException exception) {
+            System.out.println("не правильний диапоазон масив не отсортирован");
+        }
         Arrays.stream(array).forEach(x -> System.out.print(x + " "));
 
-        System.out.println("\nsum -> " + arraySum.sum());
+        System.out.println("\nsum -> " + arraySum.calculateSumArray());
 
     }
 }

@@ -9,19 +9,19 @@ public class SumMaxRows implements  ArraySum {
     }
 
     @Override
-    public double sum() {
-        double sumColum = 0;
+    public double calculateSumArray() {
+        double sumRow = 0;
         double sumMax = Integer.MIN_VALUE;
 
         for (int i = 0; i < array[0].length; i++) {
-            sumColum = 0;
+            sumRow = 0;
 
             for (int j = 0; j < array.length ; j++) {
-                sumColum += array[j][i];
+                sumRow += array[j][i];
             }
 
-            if (sumMax < sumColum) {
-                sumMax = sumColum;
+            if (sumMax < sumRow) {
+                sumMax = sumRow;
             }
         }
         return sumMax;

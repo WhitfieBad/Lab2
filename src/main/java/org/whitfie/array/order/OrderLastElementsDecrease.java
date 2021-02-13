@@ -16,7 +16,7 @@ public class OrderLastElementsDecrease implements ArrayOrder {
     }
 
     @Override
-    public void order() {
+    public void orderArray() {
        Arrays.sort(array, array.length - offset, array.length);
     }
 

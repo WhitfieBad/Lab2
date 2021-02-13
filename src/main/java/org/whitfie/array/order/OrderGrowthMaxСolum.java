@@ -2,16 +2,16 @@ package org.whitfie.array.order;
 
 import java.util.Arrays;
 
-public class OrderGrowthMaxElement implements ArrayOrder {
+public class OrderGrowthMaxСolum implements ArrayOrder {
 
     private double[][] array;
 
-    public OrderGrowthMaxElement(double[][] array) {
+    public OrderGrowthMaxСolum(double[][] array) {
         this.array = array;
     }
 
     @Override
-    public void order() {
+    public void orderArray() {
         for (int i = 0; i < array.length; i++) {
             Arrays.sort(array[i]);
         }
