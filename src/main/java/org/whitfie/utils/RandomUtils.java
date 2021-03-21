@@ -1,9 +1,16 @@
 package org.whitfie.utils;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class RandomUtils {
 
     public static double rnd(double min, double max, int decimal){
-        double diapason = max + Math.abs(min) + 1;
-        return Math.round((Math.random() * diapason) - max * 100d) / 100d;
+        max -= min;
+        double random = (Math.random() * ++max) + min;
+        return Math.round(random * (double) decimal) / (double) decimal;
     }
+
+
+
 }

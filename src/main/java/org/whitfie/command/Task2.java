@@ -26,28 +26,34 @@ public class Task2 implements Command {
 
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
-                array[i][j] = RandomUtils.rnd(-10.51, -10.53,100);
+                array[i][j] = RandomUtils.rnd(-10.51, 10.53,100);
             }
         }
 
         System.out.println("input variant ");
 
         switch (ConsoleUtils.getUint()) {
-            case 1 -> {
+            case 1 :
                 System.out.println("input offset");
                 arrayOrder = new ShiftEvenRows(array, ConsoleUtils.getInt());
                 arraySum = new SumMaxColums(array);
-            }
-            case 2 -> {
+            break;
+            case 2 :
                 arrayOrder = new OrderGrowthMaxСolum(array);
                 arraySum = new SumMaxRows(array);
-            }
-            default -> {
+            break;
+            default:
                 System.out.println("not found variant");
                 return;
-            }
-
         }
+
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length ; j++) {
+                System.out.print(array[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
 
         arrayOrder.orderArray();
 
